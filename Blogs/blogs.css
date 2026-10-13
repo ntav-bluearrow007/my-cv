@@ -1,0 +1,346 @@
+/* =========================================================
+   blog.css – Trang Blog (BlueArrow007)
+   Dùng chung bộ biến :root với trang Home
+   ========================================================= */
+
+:root {
+    --forest: #1c3a2a;
+    --forest-deep: #12261b;
+    --sunflower: #f2b705;
+    --sunflower-dark: #b48504;
+    --mist: #eef2ee;
+    --sage: #dbe5dc;
+    --ink: #1a261f;
+    --ink-soft: #4a5a50;
+    --white: #ffffff;
+
+    --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI",
+        Roboto, sans-serif;
+    --radius: 10px;
+    --wrap: 1080px;
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* tránh header che tiêu đề khi bấm chủ đề */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--mist);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--sunflower);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--forest-deep);
+}
+
+.nav {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav__brand {
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+}
+
+.nav__list {
+    display: flex;
+    gap: 1.75rem;
+}
+
+.nav__list a {
+    position: relative;
+    padding: 4px 0;
+    font-weight: 500;
+    font-size: 0.975rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.nav__list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--sunflower);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.nav__list a:hover::after,
+.nav__list a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+/* ---------- Hero ---------- */
+.blog-hero {
+    background: var(--forest);
+    color: var(--white);
+    border-bottom: 6px solid var(--sunflower);
+}
+
+.blog-hero__inner {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 3.5rem;
+}
+
+.blog-hero__title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.blog-hero__text {
+    max-width: 60ch;
+    margin-top: 1rem;
+    font-size: 1.0625rem;
+    color: var(--sage);
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.topics__link {
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    background: var(--sunflower);
+    color: var(--forest-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.topics__link:hover {
+    background: var(--white);
+}
+
+/* ---------- Category sections ---------- */
+.category {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+}
+
+.category+.category {
+    border-top: 1px solid var(--sage);
+}
+
+.category__head {
+    align-self: start;
+    position: sticky;
+    top: 96px;
+}
+
+.category__title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--forest);
+}
+
+.category__count {
+    margin-top: 0.35rem;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn--outline {
+    border: 2px solid var(--forest);
+    color: var(--forest);
+}
+
+.btn--outline:hover {
+    background: var(--forest);
+    color: var(--white);
+}
+
+/* ---------- Posts ---------- */
+.posts {
+    display: grid;
+    gap: 1rem;
+}
+
+.post {
+    padding: 1.5rem 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--sage);
+    border-left: 4px solid var(--forest);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+}
+
+.post:hover {
+    border-left-color: var(--sunflower);
+}
+
+.post__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.post__title a {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.post__title a:hover {
+    color: var(--forest);
+    text-decoration: underline;
+    text-decoration-color: var(--sunflower);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.post__excerpt {
+    max-width: 65ch;
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+}
+
+.post__more {
+    display: inline-block;
+    margin-top: 0.85rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sunflower-dark);
+    text-decoration: none;
+}
+
+.post__more:hover {
+    color: var(--forest);
+    text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    margin-top: 2rem;
+    padding: 1.75rem 1.5rem;
+    background: var(--forest-deep);
+    color: var(--sage);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+    .category {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2.5rem 1.25rem;
+    }
+
+    .category__head {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        column-gap: 1rem;
+    }
+
+    .category__head .btn {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav__list {
+        gap: 1.25rem;
+    }
+
+    .blog-hero__inner {
+        padding: 3rem 1.25rem 2.5rem;
+    }
+
+    .post {
+        padding: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
