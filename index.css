@@ -166,7 +166,7 @@ a {
     align-items: center;
     min-height: min(88vh, 720px);
     max-height: 800px;
-    background-image: url("/CV/image/IMG-hero.jpg");
+    background-image: url("/Image/IMG-hero.jpg");
     padding: 120px 24px 80px;
     background-size: cover;
     background-position: center;
